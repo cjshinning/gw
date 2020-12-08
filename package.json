@@ -1,0 +1,26 @@
+{
+  "name": "gw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjshinning/gw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjshinning/gw/issues"
+  },
+  "homepage": "https://github.com/cjshinning/gw#readme",
+  "devDependencies": {
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}
