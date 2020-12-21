@@ -5,36 +5,25 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        index: './src/index.js'
+        main: './src/index.js',
+        vendor: [
+            'lodash'
+        ]
     },
-    // devtool: 'inline-source-map',
-    // devServer: {
-    //     contentBase: './dist',
-    //     hot: true
-    // },
-    // performance: {
-    //     hints: false
-    // },
-    // module: {
-    //     rules: [
-    //         {
-    //             test: /\.css/,
-    //             use: ['style-loader', 'css-loader']
-    //         }
-    //     ]
-    // },
     plugins: [
-        // new CleanWebpackPlugin(),
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'code spliting'
-        }),
-        // new webpack.HotModuleReplacementPlugin()
+            title: 'Output Management'
+        })
     ],
-    mode: 'development',
+    optimization: {
+        splitChunks: {
+          chunks: 'async',
+          minChunks: 2,
+        },
+    },
     output: {
-        filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
-        // publicPath: '/'
+        filename: '[name].[chunkhash].js',
+        path: path.resolve(__dirname, 'dist')
     }
 }
