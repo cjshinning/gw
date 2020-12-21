@@ -5,35 +5,36 @@ const webpack = require('webpack');
 
 module.exports = {
     entry: {
-        app: './src/index.js'
+        index: './src/index.js'
     },
-    devtool: 'inline-source-map',
-    devServer: {
-        contentBase: './dist',
-        hot: true
-    },
-    performance: {
-        hints: false
-    },
-    module: {
-        rules: [
-            {
-                test: /\.css/,
-                use: ['style-loader', 'css-loader']
-            }
-        ]
-    },
+    // devtool: 'inline-source-map',
+    // devServer: {
+    //     contentBase: './dist',
+    //     hot: true
+    // },
+    // performance: {
+    //     hints: false
+    // },
+    // module: {
+    //     rules: [
+    //         {
+    //             test: /\.css/,
+    //             use: ['style-loader', 'css-loader']
+    //         }
+    //     ]
+    // },
     plugins: [
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Output management'
+            title: 'code spliting'
         }),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.HotModuleReplacementPlugin()
     ],
     mode: 'development',
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        // publicPath: '/'
     }
 }
