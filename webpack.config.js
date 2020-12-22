@@ -6,24 +6,28 @@ const webpack = require('webpack');
 module.exports = {
     entry: {
         main: './src/index.js',
-        vendor: [
-            'lodash'
-        ]
+        // vendor: [
+        //     'lodash'
+        // ]
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title: 'Output Management'
+        }),
+        new webpack.ProvidePlugin({
+            join: ['lodash', 'join']
         })
     ],
-    optimization: {
-        splitChunks: {
-          chunks: 'async',
-          minChunks: 2,
-        },
-    },
+    // optimization: {
+    //     splitChunks: {
+    //       chunks: 'async',
+    //       minChunks: 2,
+    //     },
+    // },
     output: {
-        filename: '[name].[chunkhash].js',
+        // filename: '[name].[chunkhash].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
 }
