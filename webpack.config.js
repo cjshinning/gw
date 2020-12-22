@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -13,10 +14,11 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Output Management'
+            title: 'Progresssive web application'
         }),
-        new webpack.ProvidePlugin({
-            join: ['lodash', 'join']
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
         })
     ],
     // optimization: {
@@ -27,7 +29,7 @@ module.exports = {
     // },
     output: {
         // filename: '[name].[chunkhash].js',
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     }
 }
